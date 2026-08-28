@@ -20,6 +20,11 @@
     spotify
     claude-code
     vscode
+    wl-clipboard
+    cliphist
+    hyprpicker
+    brightnessctl
+    pavucontrol
   ];
 
   environment.variables = {

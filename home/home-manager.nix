@@ -79,5 +79,9 @@
     xdg.configFile."hypr/windowrules.lua".source  = ./hypr/windowrules.lua;
 
     xdg.configFile."kitty/kitty.conf".source      = ./kitty/kitty.conf;
+
+    xdg.configFile."waybar/config".source          = ./waybar/config;
+    xdg.configFile."waybar/style.css".source       = ./waybar/style.css;
+    xdg.configFile."waybar/scripts".source         = ./waybar/scripts;
   };
 }
