@@ -11,6 +11,7 @@
     wget
     waybar
     rofi
+    yazi
     dunst
     libnotify
     uv

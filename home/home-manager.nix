@@ -7,6 +7,37 @@
   home-manager.users.loic = { ... }: {
     home.stateVersion = "26.05";
 
+    programs.git = {
+      enable = true;
+      lfs.enable = true;
+      settings = {
+        user.name = "Loïc Vandenberghe";
+        user.email = "loiclovitana@gmail.com";
+        core.editor = "vim";
+        push.autoSetupRemote = true;
+        pull.rebase = false;
+        init.defaultBranch = "main";
+        alias = {
+          coma = "commit --amend";
+          puf = "push --force-with-lease";
+          ada = "!git add -A && git status";
+          com = "commit -m";
+          undo-amend = "reset --soft HEAD@{1}";
+          rema = "pull --rebase origin master";
+        };
+      };
+    };
+
+    programs.bash = {
+      enable = true;
+      shellAliases = {
+        git-clean = ''git fetch --prune && git branch -v | grep "\[gone\]" | grep -v "[\*+]" | awk "{print \$1}" | xargs -I{} git branch -D {}'';
+        nix-apply = "sudo nixos-rebuild switch";
+        hypr-reload = "hyprctl reload";
+	ssh-add-perso = "ssh-add ~/.ssh/id_perso"
+      };
+    };
+
     programs.tmux = {
       enable = true;
       mouse = true;

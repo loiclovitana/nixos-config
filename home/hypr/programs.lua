@@ -5,6 +5,6 @@
 -- Set programs that you use
 return {
     terminal    = "kitty",
-    fileManager = "dolphin",
-    menu        = "hyprlauncher",
+    fileManager = "kitty -e yazi",
+    menu        = "rofi -show drun",
 }
