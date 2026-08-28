@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+echo "==> Checking syntax of all .nix files"
+status=0
+while IFS= read -r -d '' f; do
+  if ! nix-instantiate --parse "$f" >/dev/null; then
+    echo "PARSE FAIL: $f"
+    status=1
+  fi
+done < <(find . -name '*.nix' -print0)
+
+if [ "$status" -ne 0 ]; then
+  echo "==> Syntax check failed"
+  exit "$status"
+fi
+echo "==> Syntax OK"
+
+echo "==> Dry-building configuration"
+nixos-rebuild dry-build -I nixos-config="$(pwd)/configuration.nix"
+
+echo "==> Validation successful"

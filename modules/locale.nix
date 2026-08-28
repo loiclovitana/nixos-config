@@ -2,17 +2,17 @@
 
 {
   time.timeZone = "Europe/Zurich";
-  i18n.defaultLocale = "fr_CH.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_CH.UTF-8";
-    LC_IDENTIFICATION = "de_CH.UTF-8";
-    LC_MEASUREMENT = "de_CH.UTF-8";
-    LC_MONETARY = "de_CH.UTF-8";
-    LC_NAME = "de_CH.UTF-8";
-    LC_NUMERIC = "de_CH.UTF-8";
-    LC_PAPER = "de_CH.UTF-8";
-    LC_TELEPHONE = "de_CH.UTF-8";
-    LC_TIME = "de_CH.UTF-8";
+    LC_ADDRESS = "fr_CH.UTF-8";
+    LC_IDENTIFICATION = "fr_CH.UTF-8";
+    LC_MEASUREMENT = "fr_CH.UTF-8";
+    LC_MONETARY = "fr_CH.UTF-8";
+    LC_NAME = "fr_CH.UTF-8";
+    LC_NUMERIC = "fr_CH.UTF-8";
+    LC_PAPER = "fr_CH.UTF-8";
+    LC_TELEPHONE = "fr_CH.UTF-8";
+    LC_TIME = "fr_CH.UTF-8";
   };
 
   # Keyboard (Swiss German)

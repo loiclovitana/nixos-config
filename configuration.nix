@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    <home-manager/nixos>
     ./modules/boot.nix
     ./modules/networking.nix
     ./modules/locale.nix
@@ -14,6 +15,7 @@
     ./modules/users.nix
     ./modules/packages.nix
     ./modules/fonts.nix
+    ./modules/home-manager.nix
   ];
 
   system.stateVersion = "26.05";
