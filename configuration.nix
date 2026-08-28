@@ -15,7 +15,7 @@
     ./modules/users.nix
     ./modules/packages.nix
     ./modules/fonts.nix
-    ./modules/home-manager.nix
+    ./home/home-manager.nix
   ];
 
   system.stateVersion = "26.05";
