@@ -34,7 +34,7 @@
         git-clean = ''git fetch --prune && git branch -v | grep "\[gone\]" | grep -v "[\*+]" | awk "{print \$1}" | xargs -I{} git branch -D {}'';
         nix-apply = "sudo nixos-rebuild switch";
         hypr-reload = "hyprctl reload";
-	ssh-add-perso = "ssh-add ~/.ssh/id_perso"
+	ssh-add-perso = "ssh-add ~/.ssh/id_perso";
       };
     };
 
@@ -77,5 +77,7 @@
     xdg.configFile."hypr/input.lua".source        = ./hypr/input.lua;
     xdg.configFile."hypr/keybinds.lua".source     = ./hypr/keybinds.lua;
     xdg.configFile."hypr/windowrules.lua".source  = ./hypr/windowrules.lua;
+
+    xdg.configFile."kitty/kitty.conf".source      = ./kitty/kitty.conf;
   };
 }
