@@ -23,6 +23,7 @@
     wl-clipboard
     cliphist
     hyprpicker
+    awww
     brightnessctl
     pavucontrol
   ];

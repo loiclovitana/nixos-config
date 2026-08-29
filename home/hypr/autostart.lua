@@ -17,6 +17,10 @@
 hl.on("hyprland.start", function ()
   hl.exec_cmd("waybar")
   hl.exec_cmd("dunst")
+  -- Per-workspace wallpapers: awww draws them, the daemon follows
+  -- workspace changes and tells it what to show. See home/scripts/.
+  hl.exec_cmd("awww-daemon")
+  hl.exec_cmd("hypr-wallpaper-daemon")
   -- cliphist watchers are systemd user services (see home/home-manager.nix);
   -- starting them here races the wlr-data-control interface and they die.
 end)

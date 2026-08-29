@@ -4,8 +4,30 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.loic = { pkgs, ... }: {
+  home-manager.users.loic = { pkgs, ... }: let
+    # Per-workspace wallpapers. The images themselves live outside this repo,
+    # in ~/.local/share/wallpapers, and are managed with `set-wallpaper`. awww draws
+    # them: it swaps buffers atomically, so switching does not flash the way
+    # hyprpaper did.
+    wallpaperApply = pkgs.writeShellApplication {
+      name = "hypr-wallpaper-apply";
+      runtimeInputs = with pkgs; [ hyprland awww jq coreutils ];
+      text = builtins.readFile ./scripts/hypr-wallpaper-apply.sh;
+    };
+    wallpaperDaemon = pkgs.writeShellApplication {
+      name = "hypr-wallpaper-daemon";
+      runtimeInputs = with pkgs; [ awww socat coreutils wallpaperApply ];
+      text = builtins.readFile ./scripts/hypr-wallpaper-daemon.sh;
+    };
+    setWallpaper = pkgs.writeShellApplication {
+      name = "set-wallpaper";
+      runtimeInputs = with pkgs; [ coreutils wallpaperApply ];
+      text = builtins.readFile ./scripts/set-wallpaper.sh;
+    };
+  in {
     home.stateVersion = "26.05";
+
+    home.packages = [ wallpaperApply wallpaperDaemon setWallpaper ];
 
     # cliphist watchers. Run as systemd user services rather than hyprland
     # exec-once: the exec fires before the wlr-data-control interface is ready,
