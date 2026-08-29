@@ -14,6 +14,7 @@
     ./modules/virtualisation.nix
     ./modules/users.nix
     ./modules/packages.nix
+    ./modules/ssh.nix
     ./modules/fonts.nix
     ./home/home-manager.nix
   ];

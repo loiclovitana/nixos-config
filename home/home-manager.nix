@@ -58,6 +58,20 @@
       };
     }) [ "text" "image" ]);
 
+    # ssh-agent itself is enabled system-wide (modules/ssh.nix). This side only
+    # says which key to use and that it should be handed to the agent: the first
+    # ssh/git operation of the session prompts for the id_perso passphrase, and
+    # every later one reuses the unlocked key. The key file stays outside this
+    # repo.
+    programs.ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+      matchBlocks."*" = {
+        addKeysToAgent = "yes";
+        identityFile = "~/.ssh/id_perso";
+      };
+    };
+
     programs.git = {
       enable = true;
       lfs.enable = true;
