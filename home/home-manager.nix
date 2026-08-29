@@ -122,6 +122,10 @@
 
     xdg.configFile."kitty/kitty.conf".source      = ./kitty/kitty.conf;
 
+    xdg.configFile."rofi/config.rasi".source       = ./rofi/config.rasi;
+
+    xdg.configFile."dunst/dunstrc".source          = ./dunst/dunstrc;
+
     xdg.configFile."waybar/config".source          = ./waybar/config;
     xdg.configFile."waybar/style.css".source       = ./waybar/style.css;
     xdg.configFile."waybar/scripts".source         = ./waybar/scripts;

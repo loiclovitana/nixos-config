@@ -1,0 +1,116 @@
+/* ThinkPad red theme, matched to kitty/kitty.conf and waybar/style.css.
+ * Lives at ~/.config/rofi/config.rasi so both `rofi -show drun` and the
+ * `rofi -dmenu` clipboard picker (hypr/programs.lua) pick it up without
+ * needing a -theme flag. */
+
+configuration {
+    modes:                       "drun,run,window";
+    font:                        "JetBrainsMono Nerd Font 11";
+    show-icons:                  true;
+    icon-theme:                  "Papirus";
+    drun-display-format:         "{name}";
+    display-drun:                "";
+    display-run:                 "";
+    display-window:              "";
+    sidebar-mode:                false;
+}
+
+* {
+    bg:          #0c0304ee;
+    bg-alt:      #000000;
+    fg:          #e6dadb;
+    fg-dim:      #a08a8d;
+    accent:      #c8102e;
+    accent-soft: #f2415b;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    transparency:     "real";
+    background-color: @bg;
+    border:           2px;
+    border-color:     @accent;
+    border-radius:    10px;
+    width:            40%;
+    padding:          0px;
+}
+
+mainbox {
+    padding:  12px;
+    children: [ inputbar, listview ];
+    spacing:  10px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     #4a1f25;
+    border-radius:    8px;
+    padding:          8px 12px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent-soft;
+}
+
+entry {
+    placeholder:            "Search";
+    placeholder-color:      @fg-dim;
+    cursor:                 text;
+}
+
+listview {
+    lines:        8;
+    columns:      1;
+    scrollbar:    false;
+    fixed-height: false;
+    spacing:      4px;
+}
+
+element {
+    padding:       8px 10px;
+    border-radius: 8px;
+    spacing:       10px;
+}
+
+element normal normal   { 
+    text-color: @fg; 
+    background-color: @bg-alt; 
+    }
+element alternate normal{ text-color: @fg; background-color: @bg-alt; }
+
+element selected normal,
+element selected active {
+    background-color: @accent;
+    text-color:       #ffffff;
+}
+
+element urgent normal {
+    text-color: @accent-soft;
+}
+
+element-icon {
+    size:              22px;
+    vertical-align:    0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+message {
+    background-color: @bg-alt;
+    border-radius:    8px;
+    padding:          8px;
+}
+
+error-message {
+    background-color: @bg-alt;
+    text-color:       @accent-soft;
+    padding:          10px;
+    border-radius:    8px;
+}

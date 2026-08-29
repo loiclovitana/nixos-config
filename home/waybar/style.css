@@ -1,7 +1,7 @@
-@define-color accent #33ccff;
-@define-color accent2 #00ff99;
-@define-color surface rgba(20, 20, 24, 0.85);
-@define-color fg #cdd6f4;
+@define-color accent #f2415b;
+@define-color accent2 #a9c886;
+@define-color surface rgba(30, 7, 10, 0.85);
+@define-color fg #e6dadb;
 
 * {
   border: none;
@@ -17,7 +17,7 @@ window#waybar {
 
 tooltip {
   background: @surface;
-  border: 1px solid rgba(51, 204, 255, 0.4);
+  border: 1px solid rgba(200, 16, 46, 0.5);
   border-radius: 10px;
 }
 
@@ -77,7 +77,7 @@ tooltip label {
 }
 
 #clock {
-  color: @accent;
+  color: @fg;
   font-weight: bold;
   padding: 0 6px;
 }
@@ -99,19 +99,25 @@ tooltip label {
 }
 
 #temperature.critical {
-  color: #f38ba8;
+  color: #ffffff;
+  background: #c8102e;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 #pulseaudio.muted {
-  color: #6c7086;
+  color: #7a5c60;
 }
 
 #battery.warning {
-  color: #f9c74f;
+  color: #f0b968;
 }
 
 #battery.critical {
-  color: #f38ba8;
+  color: #ffffff;
+  background: #c8102e;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 #battery.charging {
@@ -128,5 +134,5 @@ tooltip label {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  color: #f38ba8;
+  color: #ff4d6d;
 }

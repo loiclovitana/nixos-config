@@ -11,6 +11,7 @@
     wget
     waybar
     rofi
+    papirus-icon-theme
     yazi
     dunst
     libnotify
