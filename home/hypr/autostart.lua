@@ -21,6 +21,8 @@ hl.on("hyprland.start", function ()
   -- workspace changes and tells it what to show. See home/scripts/.
   hl.exec_cmd("awww-daemon")
   hl.exec_cmd("hypr-wallpaper-daemon")
+  -- Idle daemon: dim, lock, sleep. See hypridle.conf.
+  hl.exec_cmd("hypridle")
   -- cliphist watchers are systemd user services (see home/home-manager.nix);
   -- starting them here races the wlr-data-control interface and they die.
 end)

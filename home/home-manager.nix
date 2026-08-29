@@ -27,7 +27,16 @@
   in {
     home.stateVersion = "26.05";
 
-    home.packages = [ wallpaperApply wallpaperDaemon setWallpaper ];
+    home.packages = with pkgs; [
+      wallpaperApply wallpaperDaemon setWallpaper
+      hyprlock hypridle
+      brightnessctl  # hypridle dims the backlight through it
+    ];
+
+    # Polkit authentication agent. Without one, any action needing
+    # auth_self/auth_admin (fingerprint enrollment, mounting removable media)
+    # is denied outright because nothing can prompt for the password.
+    services.hyprpolkitagent.enable = true;
 
     # cliphist watchers. Run as systemd user services rather than hyprland
     # exec-once: the exec fires before the wlr-data-control interface is ready,
@@ -157,6 +166,11 @@
     xdg.configFile."hypr/input.lua".source        = ./hypr/input.lua;
     xdg.configFile."hypr/keybinds.lua".source     = ./hypr/keybinds.lua;
     xdg.configFile."hypr/windowrules.lua".source  = ./hypr/windowrules.lua;
+
+    # Lock screen and idle daemon. Plain hypr* config, not the home-manager
+    # modules, to stay consistent with the rest of this directory.
+    xdg.configFile."hypr/hyprlock.conf".source    = ./hypr/hyprlock.conf;
+    xdg.configFile."hypr/hypridle.conf".source    = ./hypr/hypridle.conf;
 
     xdg.configFile."kitty/kitty.conf".source      = ./kitty/kitty.conf;
 
