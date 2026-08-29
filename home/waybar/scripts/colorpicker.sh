@@ -19,7 +19,7 @@ if [[ $# -eq 1 && $1 = "-j" ]]; then
     tooltip+="   $c\n"
   done
 
-  icon="󰌱"
+  icon="󰈊"
   if [ -n "$color" ]; then
     text="$icon <span color='$color'>●</span>"
   else

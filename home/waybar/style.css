@@ -12,7 +12,7 @@
 }
 
 window#waybar {
-  background: #14141a;
+  background: transparent;
 }
 
 tooltip {
@@ -28,7 +28,7 @@ tooltip label {
 .modules-left,
 .modules-center,
 .modules-right {
-  background: rgba(255, 255, 255, 0.06);
+  background: @surface;
   margin: 5px 0;
   border-radius: 10px;
 }

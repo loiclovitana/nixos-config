@@ -7,4 +7,5 @@ return {
     terminal    = "kitty",
     fileManager = "kitty -e yazi",
     menu        = "rofi -show drun",
+    clipboard   = "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
 }

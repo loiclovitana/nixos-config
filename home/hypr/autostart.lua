@@ -17,6 +17,6 @@
 hl.on("hyprland.start", function ()
   hl.exec_cmd("waybar")
   hl.exec_cmd("dunst")
-  hl.exec_cmd("wl-paste --type text --watch cliphist store")
-  hl.exec_cmd("wl-paste --type image --watch cliphist store")
+  -- cliphist watchers are systemd user services (see home/home-manager.nix);
+  -- starting them here races the wlr-data-control interface and they die.
 end)

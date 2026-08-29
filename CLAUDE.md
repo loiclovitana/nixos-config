@@ -7,3 +7,5 @@ After making changes, validate with:
 ```
 ./bin/validate
 ```
+
+If the adaptation asked by user is not suported by native configuration and require custom script or workaround to make it work, ask the user before proceeding.

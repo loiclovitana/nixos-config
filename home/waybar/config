@@ -35,12 +35,12 @@
   },
 
   "hyprland/window": {
-    "format": "{class}",
+    "format": "{title}",
     "separate-outputs": true,
+    "icon": true,
+    "icon-size":16,
     "rewrite": {
       "(.*) — Mozilla Firefox": "󰈹 $1",
-      "kitty": "󰆍 kitty",
-      "code": "󰨞 code",
       "(.*)": "$1"
     }
   },
@@ -64,7 +64,7 @@
   "custom/clipboard": {
     "format": "󰅍",
     "tooltip": false,
-    "on-click": "sh -c 'cliphist list | rofi -dmenu | cliphist decode | wl-copy'",
+    "on-click": "sh -c 'cliphist list | rofi -dmenu -display-column 2 | cliphist decode | wl-copy'",
     "interval": 86400
   },
 
@@ -73,7 +73,7 @@
     "return-type": "json",
     "interval": "once",
     "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
-    "on-click": "sleep 0.3 && ~/.config/waybar/scripts/colorpicker.sh",
+    "on-click": "sleep 0.05 && ~/.config/waybar/scripts/colorpicker.sh",
     "signal": 1
   },
 
@@ -84,12 +84,12 @@
 
   "memory": {
     "interval": 5,
-    "format": "󰍛 {percentage}%"
+    "format": " {percentage}%"
   },
 
   "temperature": {
     "interval": 5,
-    "format": "󰔏 {temperatureC}°C",
+    "format": "󰔏{temperatureC}°C",
     "format-critical": "󰔏 {temperatureC}°C",
     "critical-threshold": 80
   },

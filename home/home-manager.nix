@@ -4,8 +4,28 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.loic = { ... }: {
+  home-manager.users.loic = { pkgs, ... }: {
     home.stateVersion = "26.05";
+
+    # cliphist watchers. Run as systemd user services rather than hyprland
+    # exec-once: the exec fires before the wlr-data-control interface is ready,
+    # so wl-paste --watch exits immediately and nothing is ever stored.
+    systemd.user.services = builtins.listToAttrs (map (type: {
+      name = "cliphist-${type}";
+      value = {
+        Unit = {
+          Description = "Clipboard history (${type}) via cliphist";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type ${type} --watch ${pkgs.cliphist}/bin/cliphist store";
+          Restart = "on-failure";
+          RestartSec = 2;
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
+    }) [ "text" "image" ]);
 
     programs.git = {
       enable = true;
@@ -83,5 +103,12 @@
     xdg.configFile."waybar/config".source          = ./waybar/config;
     xdg.configFile."waybar/style.css".source       = ./waybar/style.css;
     xdg.configFile."waybar/scripts".source         = ./waybar/scripts;
+
+    # Blueman's own applet duplicates the waybar bluetooth module in the tray.
+    # Hide its autostart entry; blueman-manager is still reachable from waybar's on-click.
+    xdg.configFile."autostart/blueman.desktop".text = ''
+      [Desktop Entry]
+      Hidden=true
+    '';
   };
 }

@@ -15,6 +15,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(programs.fileManager))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(programs.menu))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(programs.clipboard))
 hl.bind(mainMod .. " + P", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + J", hl.dsp.window.pseudo())
 
@@ -38,13 +39,20 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
+-- Keep workspaces 1-5 always "existing" (even with no windows on them), so the
+-- e+1/e-1 relative navigation below cycles through all of them instead of
+-- skipping the ones that have never been opened.
+for i = 1, 5 do
+    hl.workspace_rule({ workspace = tostring(i), persistent = true })
+end
+
 -- Switch to the previous/next existing workspace with mainMod + PageDown/PageUp
-hl.bind(mainMod .. " + page_down", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + page_up",   hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + page_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + page_down",   hl.dsp.focus({ workspace = "e+1" }))
 
 -- Move the focused window to the previous/next existing workspace
-hl.bind(mainMod .. " + SHIFT + page_down", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + page_up",   hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + page_up", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + SHIFT + page_down",   hl.dsp.window.move({ workspace = "e+1" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
