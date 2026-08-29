@@ -104,6 +104,44 @@
         bind PageUp selectw -p
         bind PageDown selectw -n
         unbind n
+
+        #### Theme: ThinkPad red ####
+
+        # The status line uses the same hex values as kitty/kitty.conf and
+        # waybar/style.css: #c8102e (TrackPoint red) as the accent, #f2415b as
+        # the bright variant, #000000 background, #e6dadb foreground.
+        # `terminal` is screen-256color, so tmux would round the hexes to the
+        # 256-colour cube unless the outer terminal is declared truecolor.
+        set -as terminal-features ",xterm-kitty:RGB"
+
+        set -g status-style "bg=#000000,fg=#7a5c60"
+        set -g status-position bottom
+        set -g status-left-length 30
+        set -g status-right-length 60
+
+        # Session name in the accent colour, inverted so it reads as a badge.
+        set -g status-left "#[fg=#ffffff,bg=#c8102e,bold] #S #[fg=#c8102e,bg=#000000,nobold] "
+        set -g status-right "#[fg=#7a5c60] #{host_short} #[fg=#e6dadb]%H:%M "
+
+        # Inactive windows stay muted; the current one takes the accent.
+        setw -g window-status-format "#[fg=#7a5c60] #I #W "
+        setw -g window-status-current-format "#[fg=#f2415b,bold] #I #W "
+        setw -g window-status-activity-style "fg=#f0b968"
+        setw -g window-status-bell-style "fg=#f2415b,bold"
+
+        # Pane borders: dark red when idle, full-strength on the active pane.
+        set -g pane-border-style "fg=#231315"
+        set -g pane-active-border-style "fg=#c8102e"
+
+        # Prompts, copy-mode selection and the message line all reuse the accent.
+        set -g message-style "fg=#ffffff,bg=#c8102e"
+        set -g message-command-style "fg=#ffffff,bg=#c8102e"
+        set -g mode-style "fg=#1f070b,bg=#c8102e"
+
+        set -g display-panes-colour "#231315"
+        set -g display-panes-active-colour "#c8102e"
+
+        set -g clock-mode-colour "#c8102e"
       '';
     };
 
