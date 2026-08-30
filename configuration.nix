@@ -2,11 +2,12 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware/hardware-configuration.nix
     <home-manager/nixos>
     ./modules/boot.nix
     ./modules/networking.nix
     ./modules/locale.nix
+    ./hardware/graphics.nix
     ./modules/desktop.nix
     ./modules/audio.nix
     ./modules/bluetooth.nix
