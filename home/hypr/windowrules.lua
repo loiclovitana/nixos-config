@@ -47,3 +47,14 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+-- Satty is a transient editor spawned by the Print-key binds, not a window to
+-- tile into the layout. Its own floating-hack option only landed upstream in
+-- 0.20.1 and the compositor has the final say regardless, so float it here.
+hl.window_rule({
+    name   = "float-satty",
+    match  = { class = "com.gabm.satty" },
+
+    float  = true,
+    center = true,
+})

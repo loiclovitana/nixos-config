@@ -1,0 +1,54 @@
+# Screenshot annotation editor. Fed from stdin by the Print-key binds in
+# hypr/keybinds.lua (grimblast captures, satty edits).
+#
+# Ctrl+C / Enter -> clipboard, Ctrl+S -> file, Escape -> discard.
+
+[general]
+fullscreen = false
+resize = { mode = "smart" }
+# Hyprland draws its own borders, so let it own the frame.
+no-window-decoration = true
+# Close as soon as the screenshot has been copied or saved.
+early-exit = true
+# Annotating is the point of opening this window, so start on a drawing tool
+# rather than the pointer.
+initial-tool = "arrow"
+copy-command = "wl-copy"
+# Ctrl+S / the save button land here. No colons in the name: they make the
+# file awkward to reference from a shell.
+output-filename = "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
+# Copy and save stay distinct actions; copying should not also write a file.
+save-after-copy = false
+default-hide-toolbars = false
+primary-highlighter = "block"
+disable-notifications = false
+actions-on-enter = ["save-to-clipboard"]
+actions-on-escape = ["save-to-clipboard","exit"]
+brush-smooth-history-size = 10
+
+[font]
+# From modules/fonts.nix. JetBrains Mono is also installed but is a mono face,
+# which reads badly at annotation sizes.
+family = "Noto Sans"
+style = "Regular"
+
+
+[color-palette]
+palette = [
+    "#000000",
+    "#e3082c",
+    "#f0b968",
+    "#4c9a5e",
+    "#5b9bd5",
+    "#e6dadb",
+]
+
+custom = [
+    "#c8102e",
+    "#f2415b",
+    "#f0b968",
+    "#4c9a5e",
+    "#5b9bd5",
+    "#e6dadb",
+    "#000000",
+]

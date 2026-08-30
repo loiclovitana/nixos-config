@@ -186,6 +186,13 @@
     xdg.configFile."hypr/hyprlock.conf".source    = ./hypr/hyprlock.conf;
     xdg.configFile."hypr/hypridle.conf".source    = ./hypr/hypridle.conf;
 
+    # Screenshot annotation editor, fed by the Print-key binds in
+    # hypr/keybinds.lua. The bare .keep exists so satty's configured
+    # output-filename has a directory to write into on the first Ctrl+S --
+    # it will not create missing parents itself.
+    xdg.configFile."satty/config.toml".source      = ./satty/config.toml;
+    home.file."Pictures/Screenshots/.keep".text    = "";
+
     xdg.configFile."kitty/kitty.conf".source      = ./kitty/kitty.conf;
 
     xdg.configFile."rofi/config.rasi".source       = ./rofi/config.rasi;

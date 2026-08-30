@@ -73,6 +73,15 @@ hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.resize({ x = 20,  y = 0,   r
 hl.bind(mainMod .. " + CTRL + up",    hl.dsp.window.resize({ x = 0,   y = -20, relative = true }), { repeating = true })
 hl.bind(mainMod .. " + CTRL + down",  hl.dsp.window.resize({ x = 0,   y = 20,  relative = true }), { repeating = true })
 
+-- Screenshots. grimblast captures and pipes the PNG to satty, which is the
+-- editor: annotate, then Ctrl+C for the clipboard or Ctrl+S to write it under
+-- ~/Pictures/Screenshots (see satty/config.toml). Escape discards.
+-- --freeze only matters for "area": it holds the screen still (via hyprpicker)
+-- while the rectangle is dragged, so menus and animations cannot move mid-drag.
+hl.bind("Print",               hl.dsp.exec_cmd("grimblast --freeze save area - | satty -f -"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grimblast save active - | satty -f -"))
+hl.bind("SHIFT + Print",       hl.dsp.exec_cmd("grimblast save output - | satty -f -"))
+
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })

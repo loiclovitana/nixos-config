@@ -24,6 +24,8 @@
     wl-clipboard
     cliphist
     hyprpicker
+    grimblast  # screenshot capture (grim/slurp wrapper, Hyprland-aware)
+    satty      # screenshot annotation editor
     awww
     brightnessctl
     pavucontrol
