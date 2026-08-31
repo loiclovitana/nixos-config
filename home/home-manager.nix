@@ -38,6 +38,22 @@
     # is denied outright because nothing can prompt for the password.
     services.hyprpolkitagent.enable = true;
 
+    # Pointer cursor: Catppuccin Latte Red (package installed system-wide too,
+    # see modules/cursor.nix). 
+    home.pointerCursor = {
+      package = pkgs.catppuccin-cursors.latteRed;
+      name    = "catppuccin-latte-red-cursors";
+      size    = 24;
+
+      gtk.enable        = true;
+      hyprcursor.enable = true;
+      dotIcons.enable   = true;
+    };
+
+    # home.pointerCursor.gtk.enable only fills in gtk.cursorTheme; the gtk
+    # module still has to be on for the settings files to be written at all.
+    gtk.enable = true;
+
     # cliphist watchers. Run as systemd user services rather than hyprland
     # exec-once: the exec fires before the wlr-data-control interface is ready,
     # so wl-paste --watch exits immediately and nothing is ever stored.

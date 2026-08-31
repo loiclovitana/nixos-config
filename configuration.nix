@@ -9,6 +9,7 @@
     ./modules/locale.nix
     ./hardware/graphics.nix
     ./modules/desktop.nix
+    ./modules/cursor.nix
     ./modules/audio.nix
     ./modules/bluetooth.nix
     ./modules/fprintd.nix
