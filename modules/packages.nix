@@ -29,6 +29,7 @@
     awww
     brightnessctl
     pavucontrol
+    btop
   ];
 
   environment.variables = {

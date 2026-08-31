@@ -79,16 +79,19 @@
 
   "cpu": {
     "interval": 1,
+    "on-click": "kitty --class btop -e btop",
     "format": " {usage}%"
   },
 
   "memory": {
     "interval": 5,
+    "on-click": "kitty --class btop -e btop",
     "format": " {percentage}%"
   },
 
   "temperature": {
     "interval": 5,
+    "on-click": "kitty --class btop -e btop",
     "format": "󰔏{temperatureC}°C",
     "format-critical": "󰔏 {temperatureC}°C",
     "critical-threshold": 80

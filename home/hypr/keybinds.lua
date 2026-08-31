@@ -20,6 +20,8 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", actio
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(programs.menu))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(programs.clipboard))
 hl.bind(mainMod .. " + P", hl.dsp.layout("togglesplit"))    -- dwindle only
+-- System monitor, same target as clicking the CPU/RAM/temperature stats in waybar
+hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(programs.monitor))
 hl.bind(mainMod .. " + J", hl.dsp.window.pseudo())
 
 -- Move focus with mainMod + arrow keys
