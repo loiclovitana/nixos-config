@@ -50,6 +50,61 @@
       dotIcons.enable   = true;
     };
 
+    # Image viewer. package = null because imv itself is installed system-wide
+    # (modules/packages.nix), like every other application in this config; this
+    # module is only here to generate ~/.config/imv/config.
+    #
+    # title_text and overlay_text are shell-expanded by imv, which is how the
+    # title gets the bare filename: $imv_current_file holds the full path.
+    programs.imv = {
+      enable = true;
+      package = null;
+      settings.options = {
+        overlay = true;
+        overlay_position_bottom = true;
+        title_text = ''img - $(basename "$imv_current_file")'';
+      };
+    };
+
+    # Default applications. imv is installed system-wide (modules/packages.nix);
+    # this only writes the mimeapps.list associations.
+    #
+    # imv-dir.desktop rather than imv.desktop: given a single file, the imv-dir
+    # wrapper loads the whole containing directory and starts on that file, so
+    # n/p step through the siblings. Both entries are NoDisplay=true, which
+    # hides them from launchers but does not stop them being used as handlers.
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        # Deep links from `claude` login. The desktop entry itself is written
+        # into ~/.local/share/applications by claude-code, not by this repo;
+        # only the association is declared here. Carried over from the
+        # hand-written mimeapps.list this option replaced.
+        "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
+      } // builtins.listToAttrs (map (mime: {
+        name = mime;
+        value = [ "imv-dir.desktop" ];
+      }) [
+        "image/png"
+        "image/x-png"
+        "image/jpeg"
+        "image/jpg"
+        "image/pjpeg"
+        "image/gif"
+        "image/bmp"
+        "image/x-bmp"
+        "image/webp"
+        "image/tiff"
+        "image/tiff-fx"
+        "image/heif"
+        "image/avif"
+        "image/jxl"
+        "image/qoi"
+        "image/x-farbfeld"
+        "image/svg+xml"
+      ]);
+    };
+
     # home.pointerCursor.gtk.enable only fills in gtk.cursorTheme; the gtk
     # module still has to be on for the settings files to be written at all.
     gtk.enable = true;
@@ -82,9 +137,12 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*" = {
-        addKeysToAgent = "yes";
-        identityFile = "~/.ssh/id_perso";
+      # Upstream ssh_config directive names -- `settings` is freeform and
+      # writes them through verbatim. The old camelCase `matchBlocks` spelling
+      # is deprecated.
+      settings."*" = {
+        AddKeysToAgent = "yes";
+        IdentityFile = "~/.ssh/id_perso";
       };
     };
 
