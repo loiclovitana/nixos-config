@@ -83,6 +83,19 @@
         "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
       } // builtins.listToAttrs (map (mime: {
         name = mime;
+        # okular is installed system-wide (modules/packages.nix). The per-format
+        # entries are the handlers; org.kde.okular.desktop is the launcher entry
+        # and only claims application/vnd.kde.okular-archive. Like imv-dir, the
+        # per-format entries are NoDisplay=true, which hides them from launchers
+        # but does not stop them being used as handlers.
+        value = [ "okularApplication_pdf.desktop" ];
+      }) [
+        "application/pdf"
+        "application/x-gzpdf"
+        "application/x-bzpdf"
+        "application/x-wwf"
+      ]) // builtins.listToAttrs (map (mime: {
+        name = mime;
         value = [ "imv-dir.desktop" ];
       }) [
         "image/png"

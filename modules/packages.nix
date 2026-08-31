@@ -27,6 +27,7 @@
     grimblast  # screenshot capture (grim/slurp wrapper, Hyprland-aware)
     satty      # screenshot annotation editor
     imv        # image viewer (see xdg.mimeApps in home/home-manager.nix)
+    kdePackages.okular  # document/PDF viewer
     awww
     brightnessctl
     pavucontrol

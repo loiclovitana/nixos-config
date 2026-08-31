@@ -2,9 +2,6 @@
 
 
 Programs:
-    - task manager
-    - image viewer
-    - pdf viewer? (or is chromium better)
     - zen browser
     - webapp?
     - zoxide
