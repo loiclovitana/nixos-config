@@ -288,6 +288,11 @@
 
     xdg.configFile."kitty/kitty.conf".source      = ./kitty/kitty.conf;
 
+    # Global instructions for claude code, applied to every project on top of
+    # any per-repo CLAUDE.md. Not under xdg.configFile: claude reads
+    # ~/.claude, not ~/.config.
+    home.file.".claude/CLAUDE.md".source           = ./claude/CLAUDE.md;
+
     xdg.configFile."rofi/config.rasi".source       = ./rofi/config.rasi;
 
     xdg.configFile."dunst/dunstrc".source          = ./dunst/dunstrc;
