@@ -11,6 +11,11 @@
   Change no files, explain why in a few lines, give the options, wait for my call. Do not implement it and mention it afterwards.
 - Blocked or unsure: ask. Never guess, never work around it.
 
+## Answers
+
+- If you know the answer, give it. Do not run commands to confirm what you
+  already know. I will tell you if it was wrong.
+
 ## Commands
 
 - Read freely: search, cat, grep, git log.

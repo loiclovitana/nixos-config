@@ -6,14 +6,23 @@ final_space = true
 type = "prompt"
 alignment = "left"
 
+ 
+
   [[blocks.segments]]
-  type = "session"
+  type = "nix-shell"
   style = "diamond"
-  leading_diamond= "\ue0b6"
+  leading_diamond = ""
   foreground = "black"
   background = "white"
   foreground_templates = ["{{ if gt .Code 0 }}red{{ end }}", "black"]
-  template = '{{ if gt .Code 0 }} {{ else }} {{ end }}{{if .SSHSession }}{{ .UserName }}@{{ .HostName }}<#231315></>{{end}}'
+  template = "{{ if gt .Code 0 }} {{ else }} {{ end }}{{ if ne .Type \"unknown\" }}{{ .Type }}{{ end }}"
+
+  [[blocks.segments]]
+  type = "session"
+  style = "diamond"
+  foreground = "black"
+  background = "white"
+  template = '{{if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{end}}'
 
   [[blocks.segments]]
   type = "path"
@@ -34,6 +43,8 @@ alignment = "left"
   
     [blocks.segments.properties]
     branch_icon = ""
+
+  
 
 [[blocks]]
 type = "prompt"

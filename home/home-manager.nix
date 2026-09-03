@@ -180,21 +180,42 @@
       };
     };
 
-    programs.bash = {
+    home.shellAliases = {
+      git-clean = ''git fetch --prune && git branch -v | grep "\[gone\]" | grep -v "[\*+]" | awk "{print \$1}" | xargs -I{} git branch -D {}'';
+      nix-apply = "sudo nixos-rebuild switch";
+      hypr-reload = "hyprctl reload";
+      ssh-add-perso = "ssh-add ~/.ssh/id_perso";
+    };
+
+    programs.bash.enable = true;
+
+    programs.zsh = {
       enable = true;
-      shellAliases = {
-        git-clean = ''git fetch --prune && git branch -v | grep "\[gone\]" | grep -v "[\*+]" | awk "{print \$1}" | xargs -I{} git branch -D {}'';
-        nix-apply = "sudo nixos-rebuild switch";
-        hypr-reload = "hyprctl reload";
-	ssh-add-perso = "ssh-add ~/.ssh/id_perso";
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      history = {
+        size = 50000;
+        save = 50000;
+        ignoreDups = true;
+        ignoreSpace = true;
+        share = true;
       };
     };
 
-    
     programs.oh-my-posh = {
       enable = true;
       configFile = ./oh-my-posh/config.toml;
+      # The generated integration is unconditional; guard it in initContent so
+      # the Linux console, which cannot render the theme's glyphs, keeps zsh's
+      # default prompt.
+      enableZshIntegration = false;
     };
+
+    programs.zsh.initContent = ''
+      if [[ $TERM != linux ]]; then
+        eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${./oh-my-posh/config.toml})"
+      fi
+    '';
 
     programs.tmux = {
       enable = true;
