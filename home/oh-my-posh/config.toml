@@ -1,0 +1,75 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+version = 3
+final_space = true
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+
+  [[blocks.segments]]
+  type = "session"
+  style = "diamond"
+  leading_diamond= "\ue0b6"
+  foreground = "black"
+  background = "white"
+  foreground_templates = ["{{ if gt .Code 0 }}red{{ end }}", "black"]
+  template = '{{ if gt .Code 0 }} {{ else }} {{ end }}{{if .SSHSession }}{{ .UserName }}@{{ .HostName }}<#231315></>{{end}}'
+
+  [[blocks.segments]]
+  type = "path"
+  style = "diamond"
+  trailing_diamond = "\ue0b4"
+  leading_diamond = "\ue0b6"
+  foreground = "white"
+  background = "#980c0c"
+  template = '{{ .Path }}'
+
+  [[blocks.segments]]
+  type = "git"
+  style = "diamond"
+  trailing_diamond = "\ue0b4"
+  foreground = "white"
+  background = "#a16e00"
+  template = " {{ .HEAD }}"
+  
+    [blocks.segments.properties]
+    branch_icon = ""
+
+[[blocks]]
+type = "prompt"
+alignment = "right"
+
+  [[blocks.segments]]
+  type = "executiontime"
+  style = "plain"
+  foreground = "#9b8184"
+  template = '{{ .FormattedMs }}'
+
+    [blocks.segments.properties]
+    threshold = 2000
+    style = "round"
+
+  [[blocks.segments]]
+  type = "status"
+  style = "plain"
+  foreground = "#f2415b"
+  template = '   {{ .Code }}'
+
+    [blocks.segments.properties]
+    always_enabled = false
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+  [[blocks.segments]]
+  type = "text"
+  style = "plain"
+  foreground = "#c8102e"
+  template = "❯"
+
+[transient_prompt]
+template = "❯ "
+foreground = "#c8102e"
+background = "transparent"

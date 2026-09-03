@@ -190,6 +190,12 @@
       };
     };
 
+    
+    programs.oh-my-posh = {
+      enable = true;
+      configFile = ./oh-my-posh/config.toml;
+    };
+
     programs.tmux = {
       enable = true;
       mouse = true;

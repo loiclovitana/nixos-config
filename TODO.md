@@ -17,4 +17,3 @@ UI/UX:
         - bluetooth
     - vs code theme
     - startup screen
-    - terminal out

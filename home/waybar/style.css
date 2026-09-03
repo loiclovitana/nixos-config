@@ -29,7 +29,7 @@ tooltip label {
 .modules-center,
 .modules-right {
   background: @surface;
-  margin: 5px 0;
+  margin: 5px 0px 0px;
   border-radius: 10px;
 }
 
