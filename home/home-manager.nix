@@ -203,6 +203,14 @@
       };
     };
 
+    programs.fzf = {
+      enable = true;
+    };
+
+    programs.zoxide = {
+      enable = true;
+    };
+
     programs.oh-my-posh = {
       enable = true;
       configFile = ./oh-my-posh/config.toml;

@@ -32,6 +32,8 @@ alignment = "left"
   foreground = "white"
   background = "#980c0c"
   template = '{{ .Path }}'
+    [blocks.segments.options]
+    style="agnoster_full"
 
   [[blocks.segments]]
   type = "git"
