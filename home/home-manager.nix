@@ -176,6 +176,7 @@
           com = "commit -m";
           undo-amend = "reset --soft HEAD@{1}";
           rema = "pull --rebase origin master";
+          tree = "log --graph --oneline --all --decorate";
         };
       };
     };
