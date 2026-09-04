@@ -4,10 +4,10 @@
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_THEME", "NightDiamond-Red")
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_THEME", "NightDiamond-Red")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "catppuccin-mocha-red-cursors")
+hl.env("XCURSOR_SIZE", "32")
+hl.env("HYPRCURSOR_THEME", "catppuccin-mocha-red-cursors")
+hl.env("HYPRCURSOR_SIZE", "32")
 
 -- ssh-agent runs as a systemd user service (modules/ssh.nix) and always binds
 -- $XDG_RUNTIME_DIR/ssh-agent. greetd launches Hyprland through uwsm, which does

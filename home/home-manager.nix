@@ -43,12 +43,12 @@
     # is denied outright because nothing can prompt for the password.
     services.hyprpolkitagent.enable = true;
 
-    # Pointer cursor: Night Diamond (Red) (package installed system-wide too,
+    # Pointer cursor: Catppuccin Mocha Red (package installed system-wide too
     # see modules/cursor.nix). 
     home.pointerCursor = {
-      package = pkgs.nightdiamond-cursors;
-      name    = "NightDiamond-Red";
-      size    = 24;
+      package = pkgs.catppuccin-cursors.mochaRed;
+      name    = "catppuccin-mocha-red-cursors";
+      size    = 32;
 
       gtk.enable        = true;
       hyprcursor.enable = true;
