@@ -58,3 +58,13 @@ hl.window_rule({
     float  = true,
     center = true,
 })
+
+-- Windows spawned by waybar's on-click actions are transient panels, not
+-- windows to tile into the layout.
+hl.window_rule({
+    name   = "float-waybar-popups",
+    match  = { class = "^([Bb]top|\\.?blueman-manager(-wrapped)?|org\\.pulseaudio\\.pavucontrol|[Pp]avucontrol)$" },
+
+    float  = true,
+    center = true,
+})

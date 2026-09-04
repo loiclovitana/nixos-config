@@ -8,17 +8,18 @@
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
   "modules-right": [
+    "mpris",
     "tray",
     "custom/clipboard",
     "custom/colorpicker",
     "cpu",
     "memory",
     "temperature",
-    "idle_inhibitor",
     "backlight",
     "bluetooth",
     "pulseaudio",
     "network",
+    "idle_inhibitor",
     "battery"
   ],
 
@@ -40,6 +41,29 @@
       "(.*) — Mozilla Firefox": "󰈹 $1",
       "(.*)": "$1"
     }
+  },
+
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "dynamic-order": ["title", "artist"],
+    "dynamic-len": 45,
+    "interval": 1,
+    "player-icons": {
+      "default": "󰎄",
+      "zen": "",
+      "chromium": "",
+      "spotify": "󰓇",
+      "mpv": "󰕧"
+    },
+    "status-icons": {
+      "paused": "󰏤",
+      "stopped": "󰓛"
+    },
+    "on-click": "hyprctl dispatch focuswindow class:spotify",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl play-pause",
+    "tooltip-format": "{player_icon} {player}\n {title}\n {artist}\n {album}"
   },
 
   "clock": {

@@ -7,7 +7,7 @@
   # home/zen.nix imports a module out of the zen-browser flake.
   home-manager.extraSpecialArgs = { inherit inputs; };
 
-  home-manager.users.loic = { pkgs, ... }: let
+  home-manager.users.loic = { pkgs, config, ... }: let
     # Per-workspace wallpapers. The images themselves live outside this repo,
     # in ~/.local/share/wallpapers, and are managed with `set-wallpaper`. awww draws
     # them: it swaps buffers atomically, so switching does not flash the way
@@ -328,6 +328,11 @@
     home.file.".claude/CLAUDE.md".source           = ./claude/CLAUDE.md;
 
     xdg.configFile."rofi/config.rasi".source       = ./rofi/config.rasi;
+
+    # newt (nmtui, whiptail) reads its palette from the file NEWT_COLORS_FILE
+    # points at; it has no default config location of its own.
+    xdg.configFile."newt/palette".source           = ./newt/palette;
+    home.sessionVariables.NEWT_COLORS_FILE         = "${config.xdg.configHome}/newt/palette";
 
     xdg.configFile."dunst/dunstrc".source          = ./dunst/dunstrc;
 

@@ -10,6 +10,7 @@
     vim
     wget
     waybar
+    playerctl
     rofi
     papirus-icon-theme
     yazi

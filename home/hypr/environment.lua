@@ -4,9 +4,9 @@
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_THEME", "catppuccin-latte-red-cursors")
+hl.env("XCURSOR_THEME", "NightDiamond-Red")
 hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_THEME", "catppuccin-latte-red-cursors")
+hl.env("HYPRCURSOR_THEME", "NightDiamond-Red")
 hl.env("HYPRCURSOR_SIZE", "24")
 
 -- ssh-agent runs as a systemd user service (modules/ssh.nix) and always binds

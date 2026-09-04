@@ -105,6 +105,15 @@ tooltip label {
   color: @fg;
 }
 
+#mpris {
+  padding: 0 8px;
+  color: @fg;
+}
+
+#mpris.paused {
+  color: #a08488;
+}
+
 #temperature.critical {
   color: #ffffff;
   background: #c8102e;

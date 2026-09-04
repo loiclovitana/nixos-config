@@ -1,0 +1,34 @@
+# ThinkPad red theme for newt (nmtui, whiptail), matched to kitty/kitty.conf.
+# newt only understands the 16 ANSI colour names, so the actual hexes come from
+# the terminal palette: red -> #c8102e, brightred -> #f2415b, white -> #fdf6f6.
+# Each entry is foreground,background.
+
+root=lightgray,black
+roottext=gray,black
+border=red,black
+window=lightgray,black
+shadow=black,black
+title=brightred,black
+
+textbox=lightgray,black
+acttextbox=black,red
+label=gray,black
+helpline=gray,black
+
+listbox=lightgray,black
+actlistbox=black,red
+sellistbox=brightred,black
+actsellistbox=black,red
+
+button=white,red
+actbutton=black,brightred
+compactbutton=lightgray,black
+
+checkbox=lightgray,black
+actcheckbox=white,red
+
+entry=white,black
+disentry=gray,black
+
+emptyscale=black,gray
+fullscale=black,red

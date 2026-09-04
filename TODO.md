@@ -2,10 +2,7 @@
 
 
 Programs:
-    - zen browser
     - webapp?
-    - zoxide
-    - fzf
 
 
 UI/UX:    
