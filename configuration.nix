@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware/hardware-configuration.nix
-    <home-manager/nixos>
+    ./modules/nix.nix
     ./modules/boot.nix
     ./modules/networking.nix
     ./modules/locale.nix

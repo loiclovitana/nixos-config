@@ -183,7 +183,6 @@
 
     home.shellAliases = {
       git-clean = ''git fetch --prune && git branch -v | grep "\[gone\]" | grep -v "[\*+]" | awk "{print \$1}" | xargs -I{} git branch -D {}'';
-      nix-apply = "sudo nixos-rebuild switch";
       hypr-reload = "hyprctl reload";
       ssh-add-perso = "ssh-add ~/.ssh/id_perso";
     };

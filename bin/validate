@@ -19,6 +19,6 @@ fi
 echo "==> Syntax OK"
 
 echo "==> Dry-building configuration"
-nixos-rebuild dry-build -I nixos-config="$(pwd)/configuration.nix"
+nixos-rebuild dry-build --flake ".#nixos"
 
 echo "==> Validation successful"
