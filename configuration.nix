@@ -14,6 +14,7 @@
     ./modules/bluetooth.nix
     ./modules/fprintd.nix
     ./modules/virtualisation.nix
+    ./modules/gaming.nix
     ./modules/users.nix
     ./modules/packages.nix
     ./modules/ssh.nix
