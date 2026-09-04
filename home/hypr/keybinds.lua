@@ -45,24 +45,22 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Keep workspaces 1-5 always "existing" (even with no windows on them), so the
--- e+1/e-1 relative navigation below cycles through all of them instead of
--- skipping the ones that have never been opened.
+
 for i = 1, 5 do
-    hl.workspace_rule({ workspace = tostring(i), persistent = true })
+    hl.workspace_rule({ workspace = tostring(i), monitor = "eDP-1", persistent = true })
+end
+for i = 6, 10 do
+    hl.workspace_rule({ workspace = tostring(i), monitor = "HDMI-A-1", persistent = true })
 end
 
--- Switch to the previous/next existing workspace with mainMod + PageDown/PageUp
-hl.bind(mainMod .. " + page_up", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + page_down",   hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + page_up", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mainMod .. " + page_down",   hl.dsp.focus({ workspace = "m+1" }))
 
--- Move the focused window to the previous/next existing workspace
-hl.bind(mainMod .. " + SHIFT + page_up", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + page_down",   hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + page_up", hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(mainMod .. " + SHIFT + page_down",   hl.dsp.window.move({ workspace = "m+1" }))
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "m-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })

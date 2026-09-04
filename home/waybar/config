@@ -23,14 +23,11 @@
   ],
 
   "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "active": "",
-      "default": "",
-      "empty": ""
-    },
+    "format": "{id}",
+    "all-outputs": false,
     "persistent-workspaces": {
-      "*": [1, 2, 3, 4, 5]
+      "eDP-1": [1, 2, 3, 4, 5],
+      "HDMI-A-1": [6, 7, 8, 9, 10]
     }
   },
 

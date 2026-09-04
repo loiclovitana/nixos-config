@@ -54,12 +54,19 @@ tooltip label {
 #workspaces button {
   color: @fg;
   padding: 0 5px;
-  opacity: 0.5;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  opacity: 1;
 }
 
 #workspaces button.active {
   color: @accent;
+  border-color: @accent;
   opacity: 1;
+}
+
+#workspaces button.visible {
+  color: @accent;
 }
 
 #workspaces button.empty {
