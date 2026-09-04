@@ -1,8 +1,11 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  # home/zen.nix imports a module out of the zen-browser flake.
+  home-manager.extraSpecialArgs = { inherit inputs; };
 
   home-manager.users.loic = { pkgs, ... }: let
     # Per-workspace wallpapers. The images themselves live outside this repo,
@@ -25,6 +28,8 @@
       text = builtins.readFile ./scripts/set-wallpaper.sh;
     };
   in {
+    imports = [ ./zen.nix ];
+
     home.stateVersion = "26.05";
 
     home.packages = with pkgs; [

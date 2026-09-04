@@ -15,6 +15,7 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("command -v hyprshutdown >/de
 -- and `loginctl lock-session` end up on the same path and never stack lockers.
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(programs.fileManager))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(programs.browser))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(programs.menu))
