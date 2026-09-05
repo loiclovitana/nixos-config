@@ -37,6 +37,19 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 
+-- Groups (tabbed windows)
+hl.bind(mainMod .. " + G",         hl.dsp.group.toggle())
+hl.bind(mainMod .. " + TAB",       hl.dsp.group.next())
+hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.group.prev())
+hl.bind(mainMod .. " + CTRL + G",  hl.dsp.group.lock_active({ action = "toggle" }))
+
+-- Move windows in/out of a group
+hl.bind(mainMod .. " + SHIFT + G",   hl.dsp.window.move({ out_of_group = "" }))
+hl.bind(mainMod .. " + ALT + left",  hl.dsp.window.move({ into_group = "l" }))
+hl.bind(mainMod .. " + ALT + right", hl.dsp.window.move({ into_group = "r" }))
+hl.bind(mainMod .. " + ALT + up",    hl.dsp.window.move({ into_group = "u" }))
+hl.bind(mainMod .. " + ALT + down",  hl.dsp.window.move({ into_group = "d" }))
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
