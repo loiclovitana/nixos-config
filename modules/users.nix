@@ -6,7 +6,7 @@
 
   users.users.loic = {
     isNormalUser = true;
-    description = "user";
+    description = "loic";
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "networkmanager" "video" "docker" ];
   };

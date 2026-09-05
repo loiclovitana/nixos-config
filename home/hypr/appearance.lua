@@ -46,6 +46,36 @@ hl.config({
     animations = {
         enabled = true,
     },
+
+    -- Same palette as general.col: #c8102e accent, #191a1b inactive,
+    -- #f2415b for the locked state, #e6dadb/#7a5c60 for tab titles.
+    group = {
+        col = {
+            border_active          = "rgba(c8102eee)",
+            border_inactive        = "rgba(191a1bee)",
+            border_locked_active   = "rgba(f2415bee)",
+            border_locked_inactive = "rgba(7a5c60ee)",
+        },
+
+        groupbar = {
+            col = {
+                active          = "rgba(c8102eee)",
+                inactive        = "rgba(191a1bee)",
+                locked_active   = "rgba(f2415bee)",
+                locked_inactive = "rgba(7a5c60ee)",
+            },
+
+            -- Off by default, which leaves the titles drawn over the bare
+            -- window with only the 3px indicator; on, col.* fills each tab.
+            gradients = true,
+
+            height    = 18,
+            font_size = 10,
+
+            text_color          = "rgb(ffffff)",
+            text_color_inactive = "rgb(e6dadb)",
+        },
+    },
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
