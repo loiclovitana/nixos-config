@@ -10,4 +10,5 @@ return {
     browser     = "zen-beta",
     menu        = "rofi -show drun",
     clipboard   = "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
+    emoji       = "rofimoji",
 }

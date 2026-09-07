@@ -20,6 +20,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(programs.menu))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(programs.clipboard))
+hl.bind(mainMod .. " + period", hl.dsp.exec_cmd(programs.emoji))
 hl.bind(mainMod .. " + P", hl.dsp.layout("togglesplit"))    -- dwindle only
 -- System monitor, same target as clicking the CPU/RAM/temperature stats in waybar
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(programs.monitor))

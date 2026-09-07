@@ -12,6 +12,8 @@
     waybar
     playerctl
     rofi
+    rofimoji
+    wtype      # lets rofimoji type the picked emoji into the focused window
     papirus-icon-theme
     yazi
     dunst
