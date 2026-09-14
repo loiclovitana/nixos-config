@@ -37,6 +37,9 @@
     btop
   ];
 
+  # dynamic loader stub so generic-linux binaries (e.g. uv's downloaded Pythons) run
+  programs.nix-ld.enable = true;
+
   environment.variables = {
     EDITOR = "code --wait";
     VISUAL = "code --wait";
