@@ -18,6 +18,7 @@
     yazi
     dunst
     libnotify
+    vlc
     uv
     docker-compose
     pnpm
