@@ -9,6 +9,7 @@
     git
     vim
     wget
+    unzip
     waybar
     playerctl
     rofi
@@ -24,6 +25,7 @@
     pnpm
     spotify
     claude-code
+    codex
     vscode
     wl-clipboard
     cliphist
