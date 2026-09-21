@@ -145,7 +145,24 @@
         };
         Install.WantedBy = [ "graphical-session.target" ];
       };
-    }) [ "text" "image" ]);
+    }) [ "text" "image" ]) // {
+      # Waybar provides the StatusNotifier tray; Tailscale's desktop client
+      # registers its icon there and provides connect/exit-node controls.
+      tailscale-systray = {
+        Unit = {
+          Description = "Tailscale system tray";
+          PartOf = [ "default.target" ];
+          After = [ "dbus.service" ];
+          Requires = [ "dbus.service" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.tailscale}/bin/tailscale systray";
+          Restart = "on-failure";
+          RestartSec = 2;
+        };
+        Install.WantedBy = [ "default.target" ];
+      };
+    };
 
     # ssh-agent itself is enabled system-wide (modules/ssh.nix). This side only
     # says which key to use and that it should be handed to the agent: the first
