@@ -172,18 +172,37 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
+      includes = [ "~/.ssh/config.local" ];
       # Upstream ssh_config directive names -- `settings` is freeform and
       # writes them through verbatim. The old camelCase `matchBlocks` spelling
       # is deprecated.
-      settings."*" = {
+      settings."github.com" = {
+        User = "git";
         AddKeysToAgent = "yes";
         IdentityFile = "~/.ssh/id_perso";
+        IdentitiesOnly = true;
+      };
+      settings."aml" = {
+        User = "debian";
+        AddKeysToAgent = "yes";
+        IdentityFile = "~/.ssh/id_perso";
+        IdentitiesOnly = true;
       };
     };
 
     programs.git = {
       enable = true;
       lfs.enable = true;
+      includes = [
+        # ANAXA
+        {
+          condition = "gitdir:~/workspace/anaxa/";
+          contents = {
+            user.email = "loic@anaxa.ch";
+            core.sshCommand = "ssh -i ~/.ssh/id_anaxa -o IdentitiesOnly=yes -o AddKeysToAgent=yes";
+          };
+        }
+      ];
       settings = {
         user.name = "Loïc Vandenberghe";
         user.email = "loiclovitana@gmail.com";
@@ -202,6 +221,13 @@
         };
       };
     };
+
+    # Keep the workspace itself declarative. The SSH key remains private and
+    # must exist separately at ~/.ssh/id_anaxa.
+    home.activation.ensureAnaxaWorkspace =
+      config.lib.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD ${pkgs.coreutils}/bin/mkdir -p "$HOME/workspace/anaxa"
+      '';
 
     home.shellAliases = {
       git-clean = ''git fetch --prune && git branch -v | grep "\[gone\]" | grep -v "[\*+]" | awk "{print \$1}" | xargs -I{} git branch -D {}'';
@@ -324,6 +350,14 @@
     xdg.configFile."hypr/input.lua".source        = ./hypr/input.lua;
     xdg.configFile."hypr/keybinds.lua".source     = ./hypr/keybinds.lua;
     xdg.configFile."hypr/windowrules.lua".source  = ./hypr/windowrules.lua;
+
+    # UWSM sources this as shell code before starting Hyprland, so the runtime
+    # directory is expanded correctly and propagated to the compositor,
+    # systemd user services, and D-Bus applications. programs.ssh.startAgent
+    # creates the corresponding socket (see modules/ssh.nix).
+    xdg.configFile."uwsm/env".text = ''
+      export SSH_AUTH_SOCK="''${XDG_RUNTIME_DIR}/ssh-agent"
+    '';
 
     # Lock screen and idle daemon. Plain hypr* config, not the home-manager
     # modules, to stay consistent with the rest of this directory.

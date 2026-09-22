@@ -9,3 +9,5 @@ After making changes, validate with:
 ```
 
 If the adaptation asked by user is not suported by native configuration and require custom script or workaround to make it work, ask the user before proceeding.
+
+Never apply the change on the system with `switch` let the user do it

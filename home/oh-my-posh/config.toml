@@ -15,7 +15,7 @@ alignment = "left"
   foreground = "black"
   background = "white"
   foreground_templates = ["{{ if gt .Code 0 }}red{{ end }}", "black"]
-  template = "{{ if gt .Code 0 }} {{ else }} {{ end }}{{ if ne .Type \"unknown\" }}{{ .Type }}{{ end }}"
+  template = "{{ if gt .Code 0 }} {{ else }} {{ end }}{{ if .Env.name }}{{ .Env.name }}{{ else if ne .Type \"unknown\" }}{{ .Type }}{{ end }}"
 
   [[blocks.segments]]
   type = "session"
