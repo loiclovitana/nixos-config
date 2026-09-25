@@ -21,6 +21,10 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", actio
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(programs.menu))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(programs.clipboard))
 hl.bind(mainMod .. " + period", hl.dsp.exec_cmd(programs.emoji))
+-- Hold Super+R to dictate, then release it to transcribe and type the result
+-- into the focused application. Voxtype runs locally as a user service.
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("voxtype record start"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("voxtype record stop"), { release = true })
 hl.bind(mainMod .. " + P", hl.dsp.layout("togglesplit"))    -- dwindle only
 -- System monitor, same target as clicking the CPU/RAM/temperature stats in waybar
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd(programs.monitor))

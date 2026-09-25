@@ -162,6 +162,23 @@
         };
         Install.WantedBy = [ "default.target" ];
       };
+
+      # Local speech-to-text daemon. Hyprland owns the push-to-talk keybind, so
+      # disable Voxtype's evdev listener (and its need for input-group access).
+      voxtype = {
+        Unit = {
+          Description = "Voxtype speech-to-text daemon";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.voxtype-onnx}/bin/voxtype";
+          Environment = [ "VOXTYPE_HOTKEY_ENABLED=false" ];
+          Restart = "on-failure";
+          RestartSec = 2;
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
     };
 
     # ssh-agent itself is enabled system-wide (modules/ssh.nix). This side only

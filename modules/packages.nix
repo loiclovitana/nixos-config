@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -15,6 +15,7 @@
     rofi
     rofimoji
     wtype      # lets rofimoji type the picked emoji into the focused window
+    voxtype-onnx  # local speech-to-text; Hyprland drives push-to-talk
     papirus-icon-theme
     yazi
     dunst
@@ -24,8 +25,8 @@
     docker-compose
     pnpm
     spotify
-    claude-code
-    codex
+    pkgsUnstable.claude-code
+    pkgsUnstable.codex
     vscode
     wl-clipboard
     cliphist
