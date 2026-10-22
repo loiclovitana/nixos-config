@@ -216,7 +216,7 @@
           condition = "gitdir:~/workspace/anaxa/";
           contents = {
             user.email = "loic@anaxa.ch";
-            core.sshCommand = "ssh -i ~/.ssh/id_anaxa -o IdentitiesOnly=yes -o AddKeysToAgent=yes";
+            core.sshCommand = "ssh -i ~/.ssh/id_anaxa -F /dev/null -o IdentitiesOnly=yes -o AddKeysToAgent=yes";
           };
         }
       ];
