@@ -22,5 +22,7 @@
     ./home/home-manager.nix
   ];
 
+  hardware.sane.enable = true;
+
   system.stateVersion = "26.05";
 }
